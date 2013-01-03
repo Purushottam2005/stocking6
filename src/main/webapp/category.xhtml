@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/home.xhtml">
+	<ui:define name="content">
+		<h:form id="categoryForm">
+			<p:growl id="messages" />
+			<p:panel id="panel" header="Search Category"
+				style="margin-bottom:10px;">
+				<h:panelGrid columns="2">
+					<h:outputLabel for="categoryname" value="By name" />
+					<p:inputText id="categoryname"
+						value="#{categoryBean.category.name}" />
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Search" update="selectedcategories"
+				action="#{categoryBean.search}" style="margin-right:20px;" />
+
+
+			<p:commandButton id="showcreatecategorydialogbutton" type="button"
+				value="Create new category" update="panel"
+				onclick="createcategorydialog.show()" style="margin-right:20px;" />
+
+			<p:dataTable id="selectedcategories" var="cat" styleClass="dataTable"
+				value="#{categoryBean.selectedCategories}">
+				<p:column id="modelHeader">
+					<f:facet name="header">  
+                    Id  
+            	</f:facet>
+					<h:outputText value="#{cat.id}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">  
+                    Name  
+            	</f:facet>
+					<h:outputText value="#{cat.name}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">  
+                    Description  
+            	</f:facet>
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<p:dialog header="Enter new Category" widgetVar="createcategorydialog"
+			resizable="false">
+			<h:form id="dlgnewcategoryform">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="dlgcategoryname" value="Name: " />
+					<h:inputText id="dlgcategoryname"
+						value="#{categoryBean.category.name}" />
+					<h:outputLabel for="dlgcategorydescription" value="Description:" />
+					<h:inputText id="dlgcategorydescription"
+						value="#{categoryBean.category.description}" />
+				</h:panelGrid>
+
+				<p:commandButton id="dlgsubmitbutton" value="Save"
+					actionListener="#{categoryBean.save}"
+					oncomplete="createcategorydialog.hide();" />
+
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+</html>
