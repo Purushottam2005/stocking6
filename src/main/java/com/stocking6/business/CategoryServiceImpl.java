@@ -8,7 +8,6 @@ import javax.inject.Named;
 
 import com.stocking6.domain.Category;
 import com.stocking6.domain.dao.CategoryDAO;
-import com.stocking6.domain.dao.CategoryJPADAO;
 
 @Named
 @RequestScoped
@@ -19,7 +18,6 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public void addCategory(Category category) {
-		categoryDAO = new CategoryJPADAO();
 		categoryDAO.save(category);
 	}
 

@@ -1,10 +1,76 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/home.xhtml">
+	<ui:define name="content">
+		<h:form id="userForm">
+			<p:growl id="messages" />
+			<p:panel id="panel" header="Search User"
+				style="margin-bottom:10px;">
+				<h:panelGrid columns="2">
+					<h:outputLabel for="username" value="By name" />
+					<p:inputText id="username"
+						value="#{userBean.user.name}" />
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Search" update="selectedusers"
+				action="#{userBean.search}" style="margin-right:20px;" />
+
+
+			<p:commandButton id="showcreateuserdialogbutton" type="button"
+				value="Create new user" update="panel"
+				onclick="createuserdialog.show()" style="margin-right:20px;" />
+
+			<p:dataTable id="selectedusers" var="cat" styleClass="dataTable"
+				value="#{userBean.selectedUsers}">
+				<p:column id="modelHeader">
+					<f:facet name="header">  
+                    Id  
+            	</f:facet>
+					<h:outputText value="#{cat.id}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">  
+                    Name  
+            	</f:facet>
+					<h:outputText value="#{cat.name}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">  
+                    Description  
+            	</f:facet>
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<p:dialog header="Enter new User" widgetVar="createuserdialog"
+			resizable="false">
+			<h:form id="dlgnewuserform">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="dlgusername" value="Name: " />
+					<h:inputText id="dlgusername"
+						value="#{userBean.user.name}" />
+					<h:outputLabel for="dlguserdescription" value="Description:" />
+					<h:inputText id="dlguserdescription"
+						value="#{userBean.user.description}" />
+				</h:panelGrid>
+
+				<p:commandButton id="dlgsubmitbutton" value="Save"
+					actionListener="#{userBean.save}"
+					oncomplete="createuserdialog.hide();" />
+
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
 </html>

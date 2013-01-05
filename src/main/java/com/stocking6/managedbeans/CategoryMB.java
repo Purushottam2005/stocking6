@@ -16,13 +16,14 @@ import com.stocking6.domain.Category;
 @RequestScoped
 public class CategoryMB {
 	
+	@Inject
 	private CategoryService categoryService;
 	private Category category = new Category();
 	private List<Category> selectedCategories = new ArrayList<>();
 	
 	public void save() {
 		try{
-			getCategoryService().addCategory(category);
+			categoryService.addCategory(category);
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage("Error", new FacesMessage("Could not add category."));
 		}
@@ -30,7 +31,7 @@ public class CategoryMB {
 	
 	public void search() {
 		try{
-			selectedCategories = getCategoryService().findCategoriesByName(category.getName());
+			selectedCategories = categoryService.findCategoriesByName(category.getName());
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage("Error", new FacesMessage("Could not search any category."));
 		}
@@ -38,7 +39,7 @@ public class CategoryMB {
 	
 	public void list() {
 		try{
-			selectedCategories = getCategoryService().listAll();
+			selectedCategories = categoryService.listAll();
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage("Error", new FacesMessage("Could not list categories."));
 		}
@@ -50,15 +51,6 @@ public class CategoryMB {
 
 	public void setSelectedCategories(List<Category> selectedCategories) {
 		this.selectedCategories = selectedCategories;
-	}
-
-	public CategoryService getCategoryService() {
-		return categoryService;
-	}
-
-	@Inject
-	public void setCategoryService(CategoryService categoryService) {
-		this.categoryService = categoryService;
 	}
 
 	public Category getCategory() {

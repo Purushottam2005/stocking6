@@ -10,51 +10,67 @@
 <ui:composition template="/WEB-INF/templates/home.xhtml">
 	<ui:define name="content">
 		<h:form id="itemForm">
-			<p:panel id="panel" header="Search Category"
+			<p:growl id="messages" />
+			<p:panel id="panel" header="Search Item"
 				style="margin-bottom:10px;">
 				<h:panelGrid columns="2">
-					<h:outputLabel for="itemname" value="Search by name" />
-					<p:inputText id="itemname" value="#{itemBean.item.name}" />
+					<h:outputLabel for="itemname" value="By name" />
+					<p:inputText id="itemname"
+						value="#{itemBean.item.name}" />
 				</h:panelGrid>
 			</p:panel>
+			<p:commandButton value="Search" update="selecteditems"
+				action="#{itemBean.search}" style="margin-right:20px;" />
 
-		<p:commandButton value="Search" update="selectedItems"
-			action="#{itemBean.search}" style="margin-right:20px;" />
-		</h:form>
 
-		<p:commandButton value="Create new category" update="panel"
-			action="#{itemBean.save}" style="margin-right:20px;" />
+			<p:commandButton id="showcreateitemdialogbutton" type="button"
+				value="Create new item" update="panel"
+				onclick="createitemdialog.show()" style="margin-right:20px;" />
 
-		<p:dataTable id="selectedItems" var="item" styleClass="dataTable"
-			value="#{itemBean.selectedItems}">
-			<p:column id="modelHeader">
-				<f:facet name="header">  
+			<p:dataTable id="selecteditems" var="cat" styleClass="dataTable"
+				value="#{itemBean.selectedItems}">
+				<p:column id="modelHeader">
+					<f:facet name="header">  
                     Id  
             	</f:facet>
-				<h:outputText value="#{item.id}" />
-			</p:column>
+					<h:outputText value="#{cat.id}" />
+				</p:column>
 
-			<p:column>
-				<f:facet name="header">  
+				<p:column>
+					<f:facet name="header">  
                     Name  
             	</f:facet>
-				<h:outputText value="#{item.name}" />
-			</p:column>
+					<h:outputText value="#{cat.name}" />
+				</p:column>
 
-			<p:column>
-				<f:facet name="header">  
+				<p:column>
+					<f:facet name="header">  
                     Description  
             	</f:facet>
-				<h:outputText value="#{item.description}" />
-			</p:column>
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<p:dialog header="Enter new Item" widgetVar="createitemdialog"
+			resizable="false">
+			<h:form id="dlgnewitemform">
 
-			<p:column>
-				<f:facet name="header">  
-                    Category  
-            	</f:facet>
-				<h:outputText value="#{item.category.name}" />
-			</p:column>
-		</p:dataTable>
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="dlgitemname" value="Name: " />
+					<h:inputText id="dlgitemname"
+						value="#{itemBean.item.name}" />
+					<h:outputLabel for="dlgitemdescription" value="Description:" />
+					<h:inputText id="dlgitemdescription"
+						value="#{itemBean.item.description}" />
+				</h:panelGrid>
+
+				<p:commandButton id="dlgsubmitbutton" value="Save"
+					actionListener="#{itemBean.save}"
+					oncomplete="createitemdialog.hide();" />
+
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
 </html>
