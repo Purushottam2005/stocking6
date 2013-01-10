@@ -1,24 +1,25 @@
-insert into category(name, description) values ("Books", "Literature books");
-insert into category(name, description) values ("Sports", "Sporting equipment");
-insert into category(name, description) values ("Games", "Adventure games");
+insert into user (name, password, created_date, created_by_user, last_updated_date, last_updated_by_user) values ('admin', 'admin');
 
-insert into item (name, description, category_id) values ("Harry potter", "Good fiction", 1);
-insert into item (name, description, category_id) values ("Game of Thrones", "Nice fiction", 1);
-insert into item (name, description, category_id) values ("Neuromancer", "Sci-Fi", 1);
-insert into item (name, description, category_id) values ("The girl with a dragon tattoo", "Best-seller #1", 1);
-insert into item (name, description, category_id) values ("Kindle reviews", "Advertising for Amazon", 1);
-insert into item (name, description, category_id) values ("I, robot", "You really should read", 1);
-insert into item (name, description, category_id) values ("You", "By me", 1);
+insert into category(name, description, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Books", "Literature books", now(), 1, now(), 1);
+insert into category(name, description, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Sports", "Sporting equipment", now(), 1, now(), 1);
+insert into category(name, description, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Games", "Adventure games", now(), 1, now(), 1);
 
-insert into item (name, description, category_id) values ("Baseball bat", "Baseball stylish bat", 2);
-insert into item (name, description, category_id) values ("Shorts", "Clothing for man", 2);
-insert into item (name, description, category_id) values ("Dry Fit shirt", "Clothing for women", 2);
-insert into item (name, description, category_id) values ("Sunglasses", "Accessory for eyes", 2);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Harry potter", "Good fiction", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Game of Thrones", "Nice fiction", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Neuromancer", "Sci-Fi", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("The girl with a dragon tattoo", "Best-seller #1", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Kindle reviews", "Advertising for Amazon", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("I, robot", "You really should read", 1, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("You", "By me", 1, now(), 1, now(), 1);
 
-insert into item (name, description, category_id) values ("Call of duty", "Shooter, military", 3);
-insert into item (name, description, category_id) values ("Zelda", "RPG medieval", 3);
-insert into item (name, description, category_id) values ("Chrono Cross", "RPG game", 3);
-insert into item (name, description, category_id) values ("Street Fighter", "Fight genre game", 3);
-insert into item (name, description, category_id) values ("Broken Sword", "Point and click game", 3);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Baseball bat", "Baseball stylish bat", 2, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Shorts", "Clothing for man", 2, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Dry Fit shirt", "Clothing for women", 2, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Sunglasses", "Accessory for eyes", 2, now(), 1, now(), 1);
 
-insert into user (name, password) values ('admin', 'admin');
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Call of duty", "Shooter, military", 3, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Zelda", "RPG medieval", 3, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Chrono Cross", "RPG game", 3, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Street Fighter", "Fight genre game", 3, now(), 1, now(), 1);
+insert into item (name, description, category_id, created_date, created_by_user, last_updated_date, last_updated_by_user) values ("Broken Sword", "Point and click game", 3, now(), 1, now(), 1);
+

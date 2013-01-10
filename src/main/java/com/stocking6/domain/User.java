@@ -1,15 +1,10 @@
 package com.stocking6.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
-public class User {
+public class User extends PersistableObject{
 
-	@Id
-	@GeneratedValue
-	private Long id;
 	private String name;
 	private String password;
 
@@ -19,14 +14,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {

@@ -1,6 +1,7 @@
 package com.stocking6.persistence;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Query;
 
 import org.slf4j.Logger;
@@ -59,7 +62,7 @@ public class PersistenceHelper {
 		}
 	}
 
-	public static void save(Object obj) throws DAOException {
+	public static void store(Object obj) throws DAOException {
 		try {
 			EntityTransaction tx = em.getTransaction();
 			tx.begin();

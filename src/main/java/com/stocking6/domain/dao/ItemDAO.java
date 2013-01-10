@@ -8,7 +8,7 @@ import com.stocking6.persistence.DAOException;
 
 public interface ItemDAO {
 	Item getByPrimaryKey (Long id) throws DAOException;
-	void save (Item entity) throws DAOException;
+	void store (Item entity) throws DAOException;
 	void delete(Item entity) throws DAOException;
 	List<Item> getAll() throws DAOException;
 	List<Item> getByName(String name) throws DAOException;

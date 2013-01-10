@@ -20,7 +20,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public void addItem(Item item) {
 		itemDAO = new ItemJPADAO();
-		itemDAO.save(item);
+		itemDAO.store(item);
 	}
 
 	@Override

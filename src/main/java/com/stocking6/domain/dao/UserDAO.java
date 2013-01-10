@@ -7,7 +7,7 @@ import com.stocking6.persistence.DAOException;
 
 public interface UserDAO {
 	User getByPrimaryKey (Long id) throws DAOException;
-	void save (User entity) throws DAOException;
+	void store (User entity) throws DAOException;
 	void delete(User entity) throws DAOException;
 	List<User> getAll() throws DAOException;
 	List<User> getByName(String name) throws DAOException;

@@ -3,7 +3,6 @@ package com.stocking6.persistence;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import java.util.Map;
 
 public abstract class GenericJPADAO<ID extends Serializable, ENT> {
 	private Class<ENT> entityClass = null;
@@ -25,8 +24,8 @@ public abstract class GenericJPADAO<ID extends Serializable, ENT> {
 		return (List<ENT>) PersistenceHelper.executeQuery(jpql);
 	}
 	
-	public void save (ENT entity) throws DAOException{
-		PersistenceHelper.save(entity);
+	public void store (ENT entity) throws DAOException{
+		PersistenceHelper.store(entity);
 	}
 	
 	public void delete(ENT entity) throws DAOException{
